@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Forum</title>
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <h1><a href="/">Forum</a></h1>
+    <div id="auth-area" class="auth-area"></div>
+  </header>
+
+  <main class="layout">
+    <aside class="sidebar">
+      <h2>Categories</h2>
+      <ul id="category-list" class="category-list">
+        <li><button class="filter-btn active" data-filter="all">All Posts</button></li>
+      </ul>
+
+      <div id="user-filters" class="user-filters hidden">
+        <h2>My View</h2>
+        <ul class="category-list">
+          <li><button class="filter-btn" data-filter="mine">My Posts</button></li>
+          <li><button class="filter-btn" data-filter="liked">Posts I Liked</button></li>
+        </ul>
+      </div>
+
+      <button id="new-post-btn" class="btn btn-primary hidden">New Post</button>
+    </aside>
+
+    <section class="content">
+      <div id="alert" class="alert hidden"></div>
+      <div id="post-list" class="post-list"></div>
+    </section>
+  </main>
+
+  <!-- Auth modal -->
+  <dialog id="auth-modal">
+    <form id="login-form" class="auth-form">
+      <h2>Log in</h2>
+      <label>Email <input type="email" name="email" required></label>
+      <label>Password <input type="password" name="password" required></label>
+      <div class="modal-actions">
+        <button type="submit" class="btn btn-primary">Log in</button>
+        <button type="button" class="btn" data-close-modal>Cancel</button>
+      </div>
+      <p class="switch-form">No account? <a href="#" id="show-register">Register</a></p>
+      <p class="form-error" id="login-error"></p>
+    </form>
+
+    <form id="register-form" class="auth-form hidden">
+      <h2>Register</h2>
+      <label>Email <input type="email" name="email" required></label>
+      <label>Username <input type="text" name="username" required></label>
+      <label>Password <input type="password" name="password" minlength="8" required></label>
+      <div class="modal-actions">
+        <button type="submit" class="btn btn-primary">Register</button>
+        <button type="button" class="btn" data-close-modal>Cancel</button>
+      </div>
+      <p class="switch-form">Have an account? <a href="#" id="show-login">Log in</a></p>
+      <p class="form-error" id="register-error"></p>
+    </form>
+  </dialog>
+
+  <!-- New post modal -->
+  <dialog id="post-modal">
+    <form id="post-form" class="auth-form">
+      <h2>New Post</h2>
+      <label>Title <input type="text" name="title" required></label>
+      <label>Body <textarea name="body" rows="6" required></textarea></label>
+      <fieldset id="post-categories" class="category-checkboxes">
+        <legend>Categories</legend>
+      </fieldset>
+      <div class="modal-actions">
+        <button type="submit" class="btn btn-primary">Publish</button>
+        <button type="button" class="btn" data-close-modal>Cancel</button>
+      </div>
+      <p class="form-error" id="post-error"></p>
+    </form>
+  </dialog>
+
+  <!-- Post detail modal -->
+  <dialog id="detail-modal">
+    <div class="modal-actions" style="justify-content:flex-end">
+      <button type="button" class="btn" data-close-modal>Close</button>
+    </div>
+    <div id="detail-content"></div>
+  </dialog>
+
+  <script src="/js/api.js"></script>
+  <script src="/js/app.js"></script>
+</body>
+</html>
